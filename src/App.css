@@ -583,6 +583,16 @@ i{
  }
 
 
+ .cart-message {
+  position: fixed;
+  bottom: 220px;
+  left: 20px;
+  background-color: #4caf50; 
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  transition: opacity 1.5s;
+}
 
 
 

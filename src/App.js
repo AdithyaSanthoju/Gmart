@@ -15,12 +15,20 @@ import DmartNavbar from './components/Navbar';
 import Offerzone from './components/OfferCards';
 import Para from './components/Paragraph';
 import PopularCategories from './components/Popularcat';
+
 function App() {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
- 
+  const [message, setMessage] = useState('');
+
   const addToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
+    setMessage(`Added ${product.name} to cart!`); // Assuming product has a 'name' property
+
+    // Clear message after 3 seconds
+    setTimeout(() => {
+      setMessage('');
+    }, 3000);
   };
 
   const removeFromCart = (index) => {
@@ -92,6 +100,9 @@ function App() {
             </Button>
           </Modal.Footer>
         </Modal>
+
+        {/* Success Message */}
+        {message && <div className="cart-message">{message}</div>}
       </Router>
     </div>
   );

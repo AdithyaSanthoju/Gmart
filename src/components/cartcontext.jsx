@@ -8,10 +8,16 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
+    const [message, setMessage] = useState('');
 
     const addToCart = (item) => {
         setCartItems((prevItems) => [...prevItems, item]);
-        
+        setMessage(`Added ${item.name} to cart!`); // Assuming item has a 'name' property
+
+        // Clear the message after 3 seconds
+        setTimeout(() => {
+            setMessage('');
+        }, 3000);
     };
 
     const getTotalPrice = () => {
@@ -19,8 +25,9 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, getTotalPrice }}>
+        <CartContext.Provider value={{ cartItems, addToCart, getTotalPrice, message }}>
             {children}
+            {message && <div className="cart-message">{message}</div>} {/* Message display */}
         </CartContext.Provider>
     );
 };
