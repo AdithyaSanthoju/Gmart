@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Navbar } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 function Para() {
@@ -43,7 +43,7 @@ function Para() {
         </Row>
         <Row>
           <Col md={12}>
-            <h2>Instant Delivery from bbnow</h2>
+            <h2>Instant Delivery from Grocery</h2>
             <p data-aos="fade-up">
               In response to the ever-increasing demand for convenience, bbnow by bigbasket offers lightning-fast grocery delivery, ensuring that your essentials are at your doorstep within 15-30 minutes. Our quick delivery service has revolutionized the way you shop for groceries. Choose from 5000+ grocery essentials. bbnow is available only in select cities.
             </p>
@@ -58,3 +58,4 @@ function Para() {
 }
 
 export default Para;
+ 

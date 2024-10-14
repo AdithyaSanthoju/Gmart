@@ -11,6 +11,7 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (item) => {
         setCartItems((prevItems) => [...prevItems, item]);
+        
     };
 
     const getTotalPrice = () => {
