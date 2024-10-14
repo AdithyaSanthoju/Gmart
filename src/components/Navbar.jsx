@@ -1,19 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { Button, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-function DmartNavbar() {
+function DmartNavbar({ cart, toggleCart }) {
   return (
     <Navbar bg="light" expand="lg" className="p-3">
       <Navbar.Brand href="#" className='logo'>GROCERY</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarNav" />
       <Navbar.Collapse id="navbarNav">
         <Nav className="me-auto">
-          <Nav.Link href="#allCategories">All Categories</Nav.Link>
-          <Nav.Link href="#readyToCook">Ready to Cook</Nav.Link>
-          <Nav.Link href="#homeAppliances">Home Appliances</Nav.Link>
-          <Nav.Link href="#cookware">Cookware</Nav.Link>
-          <Nav.Link href="#serveware">Serveware</Nav.Link>
+          <Nav.Link as={Link} to="/">Home</Nav.Link> 
+          
+          <Nav.Link href="/">Ready to Cook</Nav.Link>
+          <Nav.Link href="/">Home Appliances</Nav.Link>
+          <Nav.Link href="/">Cookware</Nav.Link>
+          <Nav.Link href="/">Serveware</Nav.Link>
         </Nav>
         <Form className="d-flex mx-auto">
           <FormControl
@@ -22,12 +24,16 @@ function DmartNavbar() {
             className="me-2"
             aria-label="Search"
           />
-          <Button variant="outline-success">Search</Button>
+          <Button variant="outline-success" className='btn-1'>Search</Button>
         </Form>
         <Nav>
-          <Nav.Link href="#signin">Sign In / Register</Nav.Link>
-          <Nav.Link href="#notifications">Notifications</Nav.Link>
-          <Nav.Link href="#cart">Cart (₹0)</Nav.Link>
+          <Nav.Link as={Link} to="/login">
+            <i className="bi bi-person"></i>
+          </Nav.Link>
+          <Nav.Link href="#notifications"><i className="bi bi-bell"></i></Nav.Link>
+          <Nav.Link href="#cart" onClick={toggleCart}>
+            <i className="bi bi-cart"></i>({cart.length})
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

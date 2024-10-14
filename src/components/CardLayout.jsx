@@ -1,33 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 
-const ProductCard = ({ image, name, price, discount }) => (
-    <>
-    
-
-
-  <Col xs={12} md={4} lg={2} className="d-flex justify-content-center carddLayout" data-aos="fade-up">
-    <Card style={{ width: '265px', height: 'auto', padding: '8px 12px' }} className="text-center">
-      <Card.Img  className='card-img'
-        variant="top" 
-        src={image} 
-        style={{ height: 'auto', maxHeight: '200px', width: '100%', objectFit: 'cover' }}
-      />
-      <Card.Body className="d-flex flex-column" style={{ flexGrow: 1 }}>
-        <Card.Title style={{ margin: '10px 0' }}>{name}</Card.Title>
-        <Card.Text className="mb-auto">
-          <div>Price: ${price}</div>
-          <div>Discount: {discount}%</div>
-        </Card.Text>
-        <Button variant="success">Add to Cart</Button>
-      </Card.Body>
-    </Card>
-  </Col>
-  </>
-);
-
-const ProductGrid = () => {
+const ProductGrid = ({ addToCart }) => {
   const products = [
     {
       image: 'https://cdn.dmart.in/images/products/LHALWA200gmLal16xx040521_5_P.jpg',
@@ -68,12 +42,40 @@ const ProductGrid = () => {
   ];
 
   return (
-    <Row className="g-4 justify-content-center">
+    <Row className="g-4 justify-content-center flex-wrap">
       {products.map((product, index) => (
-        <ProductCard key={index} {...product} />
+        <ProductCard key={index} {...product} addToCart={addToCart}  />
       ))}
     </Row>
   );
 };
+
+
+
+const ProductCard = ({ image, name, price, discount, addToCart}) => (
+ 
+  <Col xs={12} md={4} lg={2} className="d-flex justify-content-center">
+    <Card style={{ width: '265px', height: 'auto', padding: '8px 12px' }} className="text-center">
+      <Card.Img
+        variant="top"
+        src={image}
+        style={{ height: 'auto', maxHeight: '200px', width: '100%', objectFit: 'cover' }}
+      />
+      <Card.Body className="d-flex flex-column" style={{ flexGrow: 1 }}>
+        <Card.Title style={{ margin: '10px 0' }}>{name}</Card.Title>
+        <Card.Text className="mb-auto">
+          <div>Price: ${price}</div>
+          <div>Discount: {discount}%</div>
+        </Card.Text>
+        <Button variant="success" onClick={() => addToCart({ image, name, price, discount })}>
+          Add to Cart
+        </Button>
+
+        
+
+      </Card.Body>
+    </Card>
+  </Col>
+);
 
 export default ProductGrid;

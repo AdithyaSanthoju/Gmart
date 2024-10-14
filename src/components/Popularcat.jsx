@@ -19,10 +19,10 @@ function PopularCategories() {
 
   return (
     <Container className="popular-categories mt-5">
-      <h4>Popular Categories</h4>
+     
       <Row className="text-center">
         {categories.map((category, index) => (
-          <Col xs={6} md={3} lg={2} key={index} className="mb-4">
+          <Col xs={4} md={3} lg={2} key={index} className="mb-4">
             <img src={category.icon} alt={category.name} className="img-fluid" />
             <p>{category.name}</p>
           </Col>

@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
@@ -27,12 +27,12 @@ function Offerzone() {
   ];
 
   return (
-    <Container data-aos="fade-up">
-      <Row>
+    <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:"space-around"}} data-aos="fade-up">
+      <Row className='margin-L' style={{width:'100%',display:'flex',alignItems:'center',justifyContent:"space-around"}}>
         {cardsData.map((card, index) => (
           <Col key={index} sm={12} md={6} lg={3} className="mb-4">
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top"  src={card.imgSrc} className='offer-img' style={{ width: '17rem' }} />
+            <Card style={{ width: '16rem' }}>
+              <Card.Img variant="top"  src={card.imgSrc} className='offer-img' style={{ width: '15rem' }} />
               <Card.Body>
                 
                 <Button variant="success">Shop</Button>
@@ -41,7 +41,7 @@ function Offerzone() {
           </Col>
         ))}
       </Row>
-    </Container>
+    </div>
   );
 }
 
